@@ -1,0 +1,19 @@
+/* border color */
+.border-color {
+  border-color: #455a64;
+}
+
+/* background color */
+.light-bg, .btn.light-bg:hover {
+  background-color: #455a64;
+}
+
+/* background color - darken */
+.dark-bg, .btn.dark-bg:hover {
+  background-color: #37474f;
+}
+
+/* text color */
+.text-color {
+  color: #37474f;
+}
