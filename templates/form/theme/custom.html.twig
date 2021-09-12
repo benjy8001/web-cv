@@ -1,0 +1,33 @@
+{# Rows #}
+{% block form_row -%}
+    {%- set widget_attr = {} -%}
+    {%- if help is not empty -%}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+    {%- endif -%}
+    <div{% with {attr: row_attr|merge({class: (row_attr.class|default('') ~ ' input-field' ~ ((not compound or force_error|default(false)) and not valid ? ' is-invalid'))|trim})} %}{{ block('attributes') }}{% endwith %}>
+        {{- form_widget(form, widget_attr) -}}
+        {{- form_help(form) -}}
+        {{- form_label(form) -}}
+    </div>
+{%- endblock form_row %}
+
+{% block submit_row -%}
+    {%- set widget_attr = {attr: {'class': 'btn dark-bg waves-effect'}} -%}
+    {{- form_widget(form, widget_attr) -}}
+{%- endblock submit_row %}
+
+{# Widgets #}
+
+{% block textarea_widget -%}
+    {% set attr = attr|merge({class: (attr.class|default('') ~ ' materialize-textarea')|trim}) %}
+    <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+{%- endblock textarea_widget %}
+
+{#
+div class input-field
+textarea class materialize-textarea
+input class validate
+
+submit btn
+<i class="btn dark-bg waves-effect waves-input-wrapper" style=""><input type="submit" class="waves-button-input" value="ENVOYER"></i>
+#}

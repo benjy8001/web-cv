@@ -1,0 +1,8 @@
+.ch-cookie-consent {
+    position: fixed;
+    bottom: 0;
+}
+
+.ch-cookie-consent [type="radio"]:not(:checked) + label, .ch-cookie-consent [type="radio"]:checked + label {
+    line-height: unset;
+}

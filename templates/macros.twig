@@ -1,0 +1,66 @@
+{#
+References part
+#}
+{% macro references_carousel_build() %}
+<div id="Services_Carousel" class="owl-carousel">
+    {{ _self.references_carousel_entry('web', 'deep-purple', 'Autodidacte', 'Mise à niveau réguliére sur les frameworks et technologies du moment (Bootstrap, Material Design, Redis, DHT, Solidity, ...).') }}
+    {{ _self.references_carousel_entry('supervisor_account', 'pink', 'Travail en équipe', 'Partage de connaissances, et bonne ambiance sont mes mots d\'ordre.') }}
+    {{ _self.references_carousel_entry('star', 'deep-orange', 'Polyvalent', 'Ma formation initiale dans le réseau, et mon expérience de developpeur font que je suis capable de m\'adapter à plusieurs type de projets.') }}
+</div>
+{% endmacro %}
+
+{% macro references_carousel_entry(icon, color, libelle, description) %}
+    <!-- Service Item -->
+    <div class="item service-item">
+        <span class="icon"><i class="material-icons {{ color }} darken-3">{{ icon }}</i></span>
+        <h6>{{ libelle }}</h6>
+        <span class="sep {{ color }} darken-3"></span>
+        <p>{{ description }}</p>
+    </div>
+    <!-- # Service Item End # -->
+{% endmacro %}
+
+{#
+Portfolio part
+#}
+{% macro portfolio_build() %}
+<div id="Portfolio_Carousel" class="owl-carousel">
+    {{ _self.portfolio_item_entry('Je gére ma carte Navigo', 'Portfolio_Detail_comutitres', 'build/images/Portfolio/realisations_web/betd/jegeremacartenavigo.fr_touslesservices_.png', 'Navigo', 'Symfony 2.8') }}
+    {{ _self.portfolio_item_entry('Offres promotionnelles Samsung (ODR)', 'Portfolio_Detail_samsung', 'build/images/Portfolio/realisations_web/betd/offres.samsung.fr_promotion.png', 'ODR Samsung', 'Symfony 4.3, Api Platform, Symfony Workflow') }}
+    {{ _self.portfolio_item_entry('Logiciel de sauvegarde décentralisé (P2P)', 'Portfolio_Detail_up2p', 'build/images/Portfolio/realisations_web/up2p.png', 'Sauvegarde décentralisé (P2P)', 'Python 3.4, Libtorrent, Fuse, Redis, InfluxDb') }}
+    {{ _self.portfolio_item_entry('Interface de gestion de sauvegarde', 'Portfolio_Detail_umanager', 'build/images/Portfolio/realisations_web/umanager.png', 'Gestion de sauvegarde', 'Laravel 5.4, VueJS, Ajax, PHP 7, Postgresql, Redis, InfluxDb') }}
+    {{ _self.portfolio_item_entry('Gestion de stock.', 'Portfolio_Detail_rotostock', 'build/images/Portfolio/realisations_web/rotostock1.jpg', 'Gestion de stock', 'Laravel 5.4, Materializecss, Ajax, PHP 7, MySQL 5.7') }}
+    {{ _self.portfolio_item_entry('App de Suivi Activité', 'Portfolio_Detail_suiviactivite', 'build/images/Portfolio/realisations_web/suivi_activite_1.png', 'App de Suivi Activité', 'Cordova, Ajax, PHP, HTML') }}
+    {{ _self.portfolio_item_entry('Gestion de B.A.T.', 'Portfolio_Detail_bat', 'build/images/Portfolio/realisations_web/roto2.jpg', 'Gestion de B.A.T.', 'Materializecss, Ajax, PHP, MySQL') }}
+    {{ _self.portfolio_item_entry('Gestion de plannings', 'Portfolio_Detail_ofre', 'build/images/Portfolio/realisations_web/ofre-formation.png', 'Gestion de plannings', 'Bootstrap, PHP, MySQL') }}
+    {{ _self.portfolio_item_entry('Gestion de parc automobile', 'Portfolio_Detail_gestparc', 'build/images/Portfolio/realisations_web/gestparc.png', 'Gestion de parc automobile', 'Bootstrap, PHP, MySQL') }}
+    {{ _self.portfolio_item_entry('Espace documentaire', 'Portfolio_Detail_docamsam', 'build/images/Portfolio/realisations_web/documentation_amsam.jpg', 'AMSAM', 'Concrete5') }}
+    {{ _self.portfolio_item_entry('Site Web Aesthetic Group', 'Portfolio_Detail_aestheticgroup', 'build/images/Portfolio/realisations_web/aesthetic.jpeg', 'Aesthetic Group', 'Prestashop') }}
+    {{ _self.portfolio_item_entry('Files Box personnalisées', 'Portfolio_Detail_filebox', 'build/images/Portfolio/realisations_web/touquetbox.png', 'Touquet Box', 'jQuery, Ajax, PHP, MySQL') }}
+    {{ _self.portfolio_item_entry('Site Web Tervia', 'Portfolio_Detail_tervia', 'build/images/Portfolio/realisations_web/tervia1.jpg', 'Site Web Tervia', 'Concrete5') }}
+    {{ _self.portfolio_item_entry('Site Web Photographies', 'Portfolio_Detail_marcelhartmann', 'build/images/Portfolio/realisations_web/marcel_hartmann_2.png', 'Marcel Hartmann', 'CSS, PHP, MySQL') }}
+    {{ _self.portfolio_item_entry('Site Web La Tangente', 'Portfolio_Detail_latangente', 'build/images/Portfolio/realisations_web/latangente.jpg', 'La Tangente', 'Concrete5') }}
+    {{ _self.portfolio_item_entry('Site Web Phileas JV', 'Portfolio_Detail_phileasjv', 'build/images/Portfolio/realisations_web/phileas-jv.jpg', 'Phileas JV', 'Concrete5') }}
+    {{ _self.portfolio_item_entry('Site Web SPTA', 'Portfolio_Detail_spta', 'build/images/Portfolio/realisations_web/spta.jpg', 'SPTA', 'Concrete5') }}
+    {{ _self.portfolio_item_entry('Site Web ECAB80', 'Portfolio_Detail_ecab80', 'build/images/Portfolio/realisations_web/ecab80.jpg', 'ECAB80', 'Concrete5') }}
+    {{ _self.portfolio_item_entry('Site Web Le Flight Case', 'Portfolio_Detail_leflightcase', 'build/images/Portfolio/realisations_web/leflightcase.jpg', 'Le Flight Case', 'Concrete5') }}
+    {{ _self.portfolio_item_entry('Site Web Picabou', 'Portfolio_Detail_picabou', 'build/images/Portfolio/realisations_web/picabou.jpg', 'Picabou', 'Concrete5') }}
+    {{ _self.portfolio_item_entry('Site Web EXG-Transfert', 'Portfolio_Detail_exgtransfert', 'build/images/Portfolio/realisations_web/screen_exg.jpg', 'EXG-Transfert', 'Bootstrap, Ajax, PHP, MySQL, Soap') }}
+    {{ _self.portfolio_item_entry('Global Multimedia Contact Center', 'Portfolio_Detail_gmcc', 'build/images/Portfolio/realisations_web/e07fa5f0-e54e-11e2-9efe-22000a91e9a7-large.jpg', 'GMCC', 'HTML, CSS, PHP, jQuery, MySQL') }}
+    {{ _self.portfolio_item_entry('Extranet Client', 'Portfolio_Detail_extranetclient', 'build/images/Portfolio/realisations_web/861a0b22-e545-11e2-ada0-22000aa5108a-large.jpg', 'Extranet Client', 'Bootstrap, PHP, jQuery, MySQL') }}
+    {{ _self.portfolio_item_entry('Outil de monitoring', 'Portfolio_Detail_monitoring', 'build/images/Portfolio/realisations_web/4e70918c-e54f-11e2-a77d-22000aa5129e-large.jpg', 'Outil de monitoring', 'HTML, CSS, PHP, jQuery, MySQL') }}
+    {{ _self.portfolio_item_entry('Outil de Diffusion d\'Informations', 'Portfolio_Detail_odi', 'build/images/Portfolio/realisations_web/2cfbfae6-e54f-11e2-a77d-22000aa5129e-large.jpg', 'ODI', 'HTML, CSS, PHP, jQuery, MySQL') }}
+</div>
+{% endmacro %}
+
+{% macro portfolio_item_entry(name, href, img_path, img_alt, tech_desc) %}
+    <div class="item portfolio-item">
+        <a href="#{{ href }}" class="modal-trigger">
+            <h6 class="portfolio-name">{{ name }}</h6>
+            <img src="{{ asset(img_path) }}" class="responsive-img" alt="{{ img_alt }}">
+            <span class="portfolio-categories">Technologies,<br>
+                <span class="light-green-text text-darken-3">{{ tech_desc }}</span>
+            </span>
+        </a>
+    </div>
+{% endmacro %}
