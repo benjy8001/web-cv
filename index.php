@@ -178,7 +178,7 @@ session_start();
           <div class="light-bg header-wrap">
             <div class="header-content">
               <h1>Je suis <strong>Benjamin Mabille</strong> |</h1>
-              <span class="sub-text">Developpeur <strong>passionné</strong>, <strong>11 ans</strong> d'expérience.</span>
+              <span class="sub-text">Developpeur <strong>passionné</strong>, <strong>13 ans</strong> d'expérience.</span>
             </div>
           </div>
           <!-- # Header Content End # -->
@@ -307,6 +307,9 @@ session_start();
                 <tr>
                     <td class="col1"><img src="images/Works/Company_Logo_5.png" alt="Consultant Séniore" class="circle"></td>
                     <td class="col2"><b>Consultant Sénior</b>
+                        <br> Réalisation d'études et chiffrages
+                        <br> Refonte
+                        <br> Usine Logicielle (Gitlab, CI/CD, Rancher, Review de code, phpqa)
                     </td>
                     <td class="col3">
                         <span class="light-green-text text-darken-3">Business&Decision</span> / Amiens (80)
@@ -364,27 +367,37 @@ session_start();
           <!-- # Title End # -->
           <div class="skills">
               <!-- Skill Item -->
-              <div class="skill-item"> <img src="images/Skills/Skill_Logo_1.png" class="circle" alt="Git Lab CI/CD">
+              <div class="skill-item"> <img src="images/Skills/Skill_Logo_cicd.png" class="circle" alt="Git Lab CI/CD">
                   <div class="title_value">Git Lab CI/CD
-                      <span class="value">75%</span>
+                      <span class="value">95%</span>
                   </div>
                   <div class="progress">
-                      <div class="determinate pink darken-4" style="width: 75%;"></div>
+                      <div class="determinate pink darken-4" style="width: 95%;"></div>
                   </div>
               </div>
               <!-- # Skill Item End # -->
               <!-- Skill Item -->
-              <div class="skill-item"> <img src="images/Skills/Skill_Logo_1.png" class="circle" alt="Symfony 2.8">
+              <div class="skill-item"> <img src="images/Skills/Skill_Logo_10.png" class="circle" alt="Docker">
+                  <div class="title_value">Docker
+                      <span class="value">90%</span>
+                  </div>
+                  <div class="progress">
+                      <div class="determinate purple darken-4" style="width: 90%;"></div>
+                  </div>
+              </div>
+              <!-- # Skill Item End # -->
+              <!-- Skill Item -->
+              <div class="skill-item"> <img src="images/Skills/Skill_Logo_sf.png" class="circle" alt="Symfony 2.8">
                   <div class="title_value">Symfony 2.8
-                      <span class="value">65%</span>
+                      <span class="value">85%</span>
                   </div>
                   <div class="progress">
-                      <div class="determinate pink darken-4" style="width: 65%;"></div>
+                      <div class="determinate pink darken-4" style="width: 85%;"></div>
                   </div>
               </div>
               <!-- # Skill Item End # -->
               <!-- Skill Item -->
-              <div class="skill-item"> <img src="images/Skills/Skill_Logo_1.png" class="circle" alt="Symfony 4.3">
+              <div class="skill-item"> <img src="images/Skills/Skill_Logo_sf.png" class="circle" alt="Symfony 4.3">
                   <div class="title_value">Symfony 4.3
                       <span class="value">85%</span>
                   </div>
@@ -483,16 +496,6 @@ session_start();
                   </div>
               </div>
               <!-- # Skill Item End # -->
-              <!-- Skill Item -->
-              <div class="skill-item"> <img src="images/Skills/Skill_Logo_10.png" class="circle" alt="Docker">
-                  <div class="title_value">Docker
-                      <span class="value">75%</span>
-                  </div>
-                  <div class="progress">
-                      <div class="determinate purple darken-4" style="width: 75%;"></div>
-                  </div>
-              </div>
-              <!-- # Skill Item End # -->
             <div class="clearfix"></div>
           </div>
         </section>
@@ -542,6 +545,28 @@ session_start();
           <h2 class="light-green-text text-darken-3">Portfolio</h2>
           <!-- # Title End # -->
           <div id="Portfolio_Carousel" class="owl-carousel">
+              <!-- Portfolio Item -->
+              <div class="item portfolio-item">
+                  <a href="#Portfolio_Detail_comutitres" class="modal-trigger">
+                      <h6 class="portfolio-name">Je gére ma carte Navigo</h6>
+                      <img src="images/Portfolio/realisations_web/betd/jegeremacartenavigo.fr_touslesservices_.png" class="responsive-img" alt="Navigo">
+                      <span class="portfolio-categories">Technologies,<br>
+                        <span class="light-green-text text-darken-3">Symfony 2.8</span>
+                    </span>
+                  </a>
+              </div>
+              <!-- # Portfolio Item End # -->
+            <!-- Portfolio Item -->
+            <div class="item portfolio-item">
+                <a href="#Portfolio_Detail_samsung" class="modal-trigger">
+                    <h6 class="portfolio-name">Offres promotionnelles Samsung (ODR)</h6>
+                    <img src="images/Portfolio/realisations_web/betd/offres.samsung.fr_promotion.png" class="responsive-img" alt="ODR Samsung">
+                    <span class="portfolio-categories">Technologies,<br>
+                        <span class="light-green-text text-darken-3">Symfony 4.3, Api Platform, Symfony Workflow</span>
+                    </span>
+                </a>
+            </div>
+            <!-- # Portfolio Item End # -->
             <!-- Portfolio Item -->
             <div class="item portfolio-item">
               <a href="#Portfolio_Detail_up2p" class="modal-trigger">
@@ -808,9 +833,9 @@ session_start();
           <h2 class="deep-orange-text text-accent-3">References</h2>
           <!-- # Title End # -->
           <div id="References_Carousel" class="owl-carousel">
-            <!-- Reference Item -->
-            <div class="item reference-item"> <img src="images/References/Reference_Logo_6.png" class="responsive-img grayscale" alt="Python"> </div>
-            <!-- # Reference Item End # -->
+              <!-- Reference Item -->
+              <div class="item reference-item"> <img src="images/References/Reference_Logo_SF.png" class="responsive-img grayscale" alt="Symfony"> </div>
+              <!-- # Reference Item End # -->
             <!-- Reference Item -->
             <div class="item reference-item"> <img src="images/References/Reference_Logo_4.png" class="responsive-img grayscale" alt="Materializecss"> </div>
             <!-- # Reference Item End # -->
@@ -826,6 +851,9 @@ session_start();
             <!-- Reference Item -->
             <div class="item reference-item"> <img src="images/References/Reference_Logo_2.png" class="responsive-img grayscale" alt="CSS3"> </div>
             <!-- # Reference Item End # -->
+              <!-- Reference Item -->
+              <div class="item reference-item"> <img src="images/References/Reference_Logo_6.png" class="responsive-img grayscale" alt="Python"> </div>
+              <!-- # Reference Item End # -->
           </div>
         </section>
         <!-- # References End # -->
@@ -934,6 +962,47 @@ session_start();
           </div>
         </div>
         <!-- # Loader End -->
+          <!-- Portfolio Detail Modal -->
+          <div id="Portfolio_Detail_comutitres" class="modal">
+              <div class="modal-content">
+                  <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+                  <h4 class="modal-title">Je gére ma carte Navigo</h4>
+                  <img src="images/Portfolio/realisations_web/betd/jegeremacartenavigo.fr_touslesservices_.png" class="responsive-img" alt="Navigo">
+                  <hr>
+                  <p>
+                      Pour le client COMUTITRES (Groupement RATP/SNCF/OPTILE) :
+                      <br>- Reprise TMA site de Services En Ligne (achat de titres, sav, ...)
+                      <br>-> Symfony 2.8
+                      <br>-> Réalisation d'études et chiffrages (OpenStreetMap, OpenCV, ...)
+                      <br>-> Rédaction de SFD/STD
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <a href="https://www.jegeremacartenavigo.fr/touslesservices" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>
+              </div>
+          </div>
+          <!-- # Portfolio Detail Modal End # -->
+          <!-- Portfolio Detail Modal -->
+          <div id="Portfolio_Detail_samsung" class="modal">
+              <div class="modal-content">
+                  <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+                  <h4 class="modal-title">Offres promotionnelles Samsung</h4>
+                  <img src="images/Portfolio/realisations_web/betd/offres.samsung.fr_promotion.png" class="responsive-img" alt="ODR Samsung">
+                  <hr>
+                  <p>
+                      Projet de build pour le client SAMSUNG :
+                      <br>- Refonte d'un outil de configuration de promotions dématérialisées pour Samsung (https://offre.samsung.com)
+                      <br>-> Symfony 4.3, Api Platform, Symfony Workflow
+                      <br><br>
+                      <br>CI/CD GitLab
+                      <br>-> Utilisation de l'image mykiwi/phaudit pour contrôle de la qualité de code, phpunit, Makefile, Rancher
+                  </p>
+              </div>
+              <div class="modal-footer">
+                  <a href="https://offres.samsung.fr" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>
+              </div>
+          </div>
+          <!-- # Portfolio Detail Modal End # -->
         <!-- Portfolio Detail Modal -->
         <div id="Portfolio_Detail_up2p" class="modal">
           <div class="modal-content">
