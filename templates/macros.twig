@@ -1,15 +1,49 @@
 {#
-References part
+Skills part
 #}
-{% macro references_carousel_build() %}
-<div id="Services_Carousel" class="owl-carousel">
-    {{ _self.references_carousel_entry('web', 'deep-purple', 'Autodidacte', 'Mise à niveau réguliére sur les frameworks et technologies du moment (Bootstrap, Material Design, Redis, DHT, Solidity, ...).') }}
-    {{ _self.references_carousel_entry('supervisor_account', 'pink', 'Travail en équipe', 'Partage de connaissances, et bonne ambiance sont mes mots d\'ordre.') }}
-    {{ _self.references_carousel_entry('star', 'deep-orange', 'Polyvalent', 'Ma formation initiale dans le réseau, et mon expérience de developpeur font que je suis capable de m\'adapter à plusieurs type de projets.') }}
+{% macro skills_build() %}
+<div id="skills">
+    {{ _self.skills_item_build('Git Lab CI/CD', '95', 'build/images/Skills/Skill_Logo_cicd.png', 'Git Lab CI/CD', 'determinate pink darken-4') }}
+    {{ _self.skills_item_build('Docker', '90', 'build/images/Skills/Skill_Logo_10.png', 'Docker', 'determinate purple darken-4') }}
+    {{ _self.skills_item_build('Symfony 2.8', '85', 'build/images/Skills/Skill_Logo_sf.png', 'Symfony 2.8', 'determinate pink darken-4') }}
+    {{ _self.skills_item_build('Symfony 4.3', '85', 'build/images/Skills/Skill_Logo_sf.png', 'Symfony 4.3', 'determinate pink darken-4') }}
+    {{ _self.skills_item_build('PHP 7', '95', 'build/images/Skills/Skill_Logo_1.png', 'PHP 7', 'determinate pink darken-4') }}
+    {{ _self.skills_item_build('Laravel 5.4', '60', 'build/images/Skills/Skill_Logo_8.png', 'Laravel 5.4', 'determinate lime darken-4') }}
+    {{ _self.skills_item_build('MySQL', '95', 'build/images/Skills/Skill_Logo_2.png', 'MySQL', 'determinate blue darken-3') }}
+    {{ _self.skills_item_build('Linux', '90', 'build/images/Skills/Skill_Logo_4.png', 'Linux', 'determinate red darken-4') }}
+    {{ _self.skills_item_build('Python', '65', 'build/images/Skills/Skill_Logo_9.png', 'Python', 'determinate pink darken-4') }}
+    {{ _self.skills_item_build('Concrete 5', '65', 'build/images/Skills/Skill_Logo_6.png', 'Concrete 5', 'determinate teal darken-4') }}
+    {{ _self.skills_item_build('Cordova', '70', 'build/images/Skills/Skill_Logo_7.png', 'Cordova', 'determinate indigo darken-4') }}
+
+    <div class="clearfix"></div>
 </div>
 {% endmacro %}
 
-{% macro references_carousel_entry(icon, color, libelle, description) %}
+{% macro skills_item_build(name, pourc, img_path, img_alt, color_class) %}
+    <!-- Skill Item -->
+    <div class="skill-item"> <img src="{{ asset(img_path) }}" class="circle" alt="{{ img_alt }}">
+        <div class="title_value">{{ name }}
+            <span class="value">{{ pourc }}%</span>
+        </div>
+        <div class="progress">
+            <div class="{{ color_class }}" style="width: {{ pourc }}%;"></div>
+        </div>
+    </div>
+    <!-- # Skill Item End # -->
+{% endmacro %}
+
+{#
+Services part
+#}
+{% macro services_carousel_build() %}
+<div id="Services_Carousel" class="owl-carousel">
+    {{ _self.services_carousel_entry('web', 'deep-purple', 'Autodidacte', 'Mise à niveau réguliére sur les frameworks et technologies du moment (Bootstrap, Material Design, Redis, DHT, Solidity, ...).') }}
+    {{ _self.services_carousel_entry('supervisor_account', 'pink', 'Travail en équipe', 'Partage de connaissances, et bonne ambiance sont mes mots d\'ordre.') }}
+    {{ _self.services_carousel_entry('star', 'deep-orange', 'Polyvalent', 'Ma formation initiale dans le réseau, et mon expérience de developpeur font que je suis capable de m\'adapter à plusieurs type de projets.') }}
+</div>
+{% endmacro %}
+
+{% macro services_carousel_entry(icon, color, libelle, description) %}
     <!-- Service Item -->
     <div class="item service-item">
         <span class="icon"><i class="material-icons {{ color }} darken-3">{{ icon }}</i></span>
@@ -18,6 +52,27 @@ References part
         <p>{{ description }}</p>
     </div>
     <!-- # Service Item End # -->
+{% endmacro %}
+
+{#
+References part
+#}
+{% macro references_carousel_build() %}
+    <div id="References_Carousel" class="owl-carousel">
+        {{ _self.references_carousel_entry('Symfony', 'build/images/References/Reference_Logo_SF.png') }}
+        {{ _self.references_carousel_entry('Materializecss', 'build/images/References/Reference_Logo_4.png') }}
+        {{ _self.references_carousel_entry('Bootstrap Twitter', 'build/images/References/Reference_Logo_5.png') }}
+        {{ _self.references_carousel_entry('jQuery', 'build/images/References/Reference_Logo_3.png') }}
+        {{ _self.references_carousel_entry('HTML5', 'build/images/References/Reference_Logo_1.png') }}
+        {{ _self.references_carousel_entry('CSS3', 'build/images/References/Reference_Logo_2.png') }}
+        {{ _self.references_carousel_entry('Python', 'build/images/References/Reference_Logo_6.png') }}
+    </div>
+{% endmacro %}
+
+{% macro references_carousel_entry(libelle, icon) %}
+    <!-- Reference Item -->
+    <div class="item reference-item"> <img src="{{ asset(icon) }}" class="responsive-img grayscale" alt="{{ libelle }}"> </div>
+    <!-- # Reference Item End # -->
 {% endmacro %}
 
 {#
@@ -63,4 +118,32 @@ Portfolio part
             </span>
         </a>
     </div>
+{% endmacro %}
+
+
+{% macro portfolio_details_build() %}
+    {{ _self.portfolio_details_entry() }}
+{% endmacro %}
+
+{% macro portfolio_details_entry() %}
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_comutitres" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">Je gére ma carte Navigo</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/betd/jegeremacartenavigo.fr_touslesservices_.png') }}" class="responsive-img" alt="Navigo">
+            <hr>
+            <p>
+                Pour le client COMUTITRES (Groupement RATP/SNCF/OPTILE) :
+                <br>- Reprise TMA site de Services En Ligne (achat de titres, sav, ...)
+                <br>-> Symfony 2.8
+                <br>-> Réalisation d'études et chiffrages (OpenStreetMap, OpenCV, ...)
+                <br>-> Rédaction de SFD/STD
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="https://www.jegeremacartenavigo.fr/touslesservices" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
 {% endmacro %}

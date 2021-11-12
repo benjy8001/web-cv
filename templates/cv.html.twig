@@ -125,139 +125,8 @@
         <!-- Title -->
         <h2 class="deep-orange-text text-accent-3">Savoir Faire</h2>
         <!-- # Title End # -->
-        <div class="skills">
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_cicd.png') }}" class="circle" alt="Git Lab CI/CD">
-                <div class="title_value">Git Lab CI/CD
-                    <span class="value">95%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate pink darken-4" style="width: 95%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_10.png') }}" class="circle" alt="Docker">
-                <div class="title_value">Docker
-                    <span class="value">90%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate purple darken-4" style="width: 90%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_sf.png') }}" class="circle" alt="Symfony 2.8">
-                <div class="title_value">Symfony 2.8
-                    <span class="value">85%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate pink darken-4" style="width: 85%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_sf.png') }}" class="circle" alt="Symfony 4.3">
-                <div class="title_value">Symfony 4.3
-                    <span class="value">85%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate pink darken-4" style="width: 85%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_1.png') }}" class="circle" alt="PHP">
-                <div class="title_value">PHP (5 / 7.2)
-                    <span class="value">95%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate pink darken-4" style="width: 95%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_2.png') }}" class="circle" alt="MySQL">
-                <div class="title_value">MySQL
-                    <span class="value">95%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate blue darken-3" style="width: 95%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_3.png') }}" class="circle" alt="GIT">
-                <div class="title_value">GIT
-                    <span class="value">90%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate amber darken-4" style="width: 90%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_4.png') }}" class="circle" alt="Linux">
-                <div class="title_value">Linux
-                    <span class="value">90%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate red darken-4" style="width: 90%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_5.png') }}" class="circle" alt="QT5">
-                <div class="title_value">QT5
-                    <span class="value">65%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate brown darken-4" style="width: 65%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_6.png') }}" class="circle" alt="Concrete 5">
-                <div class="title_value">Concrete 5
-                    <span class="value">70%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate teal darken-4" style="width: 70%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_7.png') }}" class="circle" alt="Cordova">
-                <div class="title_value">Cordova
-                    <span class="value">75%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate indigo darken-4" style="width: 75%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_8.png') }}" class="circle" alt="Laravel 5.4">
-                <div class="title_value">Laravel 5.4
-                    <span class="value">60%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate lime darken-4" style="width: 60%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <!-- Skill Item -->
-            <div class="skill-item"> <img src="{{ asset('build/images/Skills/Skill_Logo_9.png') }}" class="circle" alt="Python">
-                <div class="title_value">Python
-                    <span class="value">65%</span>
-                </div>
-                <div class="progress">
-                    <div class="determinate pink darken-4" style="width: 65%;"></div>
-                </div>
-            </div>
-            <!-- # Skill Item End # -->
-            <div class="clearfix"></div>
-        </div>
+
+        {{ macros.skills_build() }}
     </section>
 {% endblock %}
 
@@ -270,7 +139,7 @@
         <h2 class="deep-purple-text text-darken-3">Savoir être</h2>
         <!-- # Title End # -->
 
-        {{ macros.references_carousel_build() }}
+        {{ macros.services_carousel_build() }}
     </section>
 {% endblock %}
 
@@ -295,29 +164,8 @@
         <!-- Title -->
         <h2 class="deep-orange-text text-accent-3">References</h2>
         <!-- # Title End # -->
-        <div id="References_Carousel" class="owl-carousel">
-            <!-- Reference Item -->
-            <div class="item reference-item"> <img src="{{ asset('build/images/References/Reference_Logo_SF.png') }}" class="responsive-img grayscale" alt="Symfony"> </div>
-            <!-- # Reference Item End # -->
-            <!-- Reference Item -->
-            <div class="item reference-item"> <img src="{{ asset('build/images/References/Reference_Logo_4.png') }}" class="responsive-img grayscale" alt="Materializecss"> </div>
-            <!-- # Reference Item End # -->
-            <!-- Reference Item -->
-            <div class="item reference-item"> <img src="{{ asset('build/images/References/Reference_Logo_5.png') }}" class="responsive-img grayscale" alt="Bootstrap Twitter"> </div>
-            <!-- # Reference Item End # -->
-            <!-- Reference Item -->
-            <div class="item reference-item"> <img src="{{ asset('build/images/References/Reference_Logo_3.png') }}" class="responsive-img grayscale" alt="jQuery"> </div>
-            <!-- # Reference Item End # -->
-            <!-- Reference Item -->
-            <div class="item reference-item"> <img src="{{ asset('build/images/References/Reference_Logo_1.png') }}" class="responsive-img grayscale" alt="HTML5"> </div>
-            <!-- # Reference Item End # -->
-            <!-- Reference Item -->
-            <div class="item reference-item"> <img src="{{ asset('build/images/References/Reference_Logo_2.png') }}" class="responsive-img grayscale" alt="CSS3"> </div>
-            <!-- # Reference Item End # -->
-            <!-- Reference Item -->
-            <div class="item reference-item"> <img src="{{ asset('build/images/References/Reference_Logo_6.png') }}" class="responsive-img grayscale" alt="Python"> </div>
-            <!-- # Reference Item End # -->
-        </div>
+
+        {{ macros.references_carousel_build() }}
     </section>
 {% endblock %}
 
@@ -381,6 +229,8 @@
 
 
 {% block portfolio_details_modal %}
+    {{ macros.portfolio_details_build() }}
+
     <!-- Portfolio Detail Modal -->
     <div id="Portfolio_Detail_comutitres" class="modal">
         <div class="modal-content">

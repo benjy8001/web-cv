@@ -74,7 +74,10 @@ down: ## Stop the VMs
 	$(DOCKER_COMPOSE) down --volumes
 	printf "\n\n"
 
-start: run vendor assets migrate ## Run project
+add-hooks:
+	 rm -fr .git/hooks && ln -s `pwd`/.hooks/ .git/hooks
+
+start: add-hooks run vendor assets migrate ## Run project
 
 ##.env.dist => .env.local CP
 
@@ -86,6 +89,10 @@ composer.lock: ## Run composer update
 	$(COMPOSER) update --lock --no-interaction --no-suggest
 
 vendor: composer.lock ## Run composer install
+	printf " 💽\033[33m Start Composer ... \033[0m\n"
+	$(COMPOSER) install ${QUIET_PARAM}
+
+composer-install:
 	printf " 💽\033[33m Start Composer ... \033[0m\n"
 	$(COMPOSER) install ${QUIET_PARAM}
 
