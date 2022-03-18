@@ -12,7 +12,7 @@ composer-unused() {
 }
 
 phpunit () {
-    phpqa phpdbg -qrr /tools/phpunit-8 -c . --colors=never --exclude-group excluded,functionnal $@
+    phpqa phpdbg -qrr /tools/phpunit -c . --colors=never --exclude-group excluded,functionnal $@
 }
 
 symfony () {
