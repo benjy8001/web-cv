@@ -76,8 +76,23 @@ down: ## Stop the VMs
 
 add-hooks:
 	 rm -fr .git/hooks && ln -s `pwd`/.hooks/ .git/hooks
+login-sudo: # demande le login utilisateur
+	printf "\033[32m Please enter your password \033[0m\n"
+	sudo printf "\033[32m thanxs \033[0m\n"
 
-start: add-hooks run vendor assets migrate ## Run project
+host-manager: login-sudo
+	wget -q https://gitlab.com/snippets/1730128/raw -O host-manager
+	chmod +x host-manager
+
+add-hosts:host-manager
+	sudo ./host-manager -add mailer-dev.local.dev 127.0.0.1
+	sudo ./host-manager -add web-cv-dev.local.dev 127.0.0.1
+
+remove-hosts:login-sudo
+	sudo ./host-manager -remove mailer-dev.local.dev
+	sudo ./host-manager -remove web-cv-dev.local.dev
+
+start: add-hooks add-hosts run vendor assets migrate ## Run project
 
 ##.env.dist => .env.local CP
 
