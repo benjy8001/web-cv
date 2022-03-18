@@ -160,5 +160,9 @@ twigcs: ## twigcs (https://github.com/friendsoftwig/twigcs)
 	$(eval NEW_FILES := $(shell git diff $(REF_BRANCH) --name-only| egrep '.twig$$'))
 	$(QA) sh -c 'for filename in $(NEW_FILES);  do if [ -f $$filename ]; then  echo  "analysing $$filename"; twigcs lint  --severity=error $$filename; fi; done;'
 
+phpunit: ## Run phpunit
+	printf " 💽\033[33m Start PHPUnit ... \033[0m\n"
+	$(QA) phpdbg -qrr /tools/phpunit-8 -c . --report-useless-tests --colors=never
+
 deploy:
 	printf "\033[32m Deploy to Server \033[0m\n"
