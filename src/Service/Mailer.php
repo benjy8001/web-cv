@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service;
@@ -13,8 +14,9 @@ class Mailer
     private ContainerBagInterface $params;
 
     /**
-     * @param Environment   $twig
-     * @param \Swift_Mailer $mailer
+     * @param Environment           $twig
+     * @param \Swift_Mailer         $mailer
+     * @param ContainerBagInterface $params
      */
     public function __construct(Environment $twig, \Swift_Mailer $mailer, ContainerBagInterface $params)
     {
@@ -26,10 +28,11 @@ class Mailer
     /**
      * @param $data
      *
-     * @return bool
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
+     *
+     * @return bool
      */
     public function sendEmail($data): bool
     {
@@ -40,11 +43,11 @@ class Mailer
             ->setTo($this->params->get('app.mail.sendto'))
             ->setBody(
                 $this->twig->render('emails/contact.html.twig', [
-                    'data' => $data
+                    'data' => $data,
                 ]), 'text/html'
             )
         ;
 
-        return (0 !== $this->mailer->send($mail));
+        return 0 !== $this->mailer->send($mail);
     }
 }

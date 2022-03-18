@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repository;
@@ -16,6 +17,7 @@ class ContactFormRepository extends ServiceEntityRepository
 
     /**
      * @param ContactForm $contactForm
+     *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */

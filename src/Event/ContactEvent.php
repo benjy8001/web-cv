@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Event;
@@ -13,6 +14,7 @@ class ContactEvent extends Event
 
     /**
      * ContactEvent constructor.
+     *
      * @param array $data
      */
     public function __construct(array $data)

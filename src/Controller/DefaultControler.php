@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -17,9 +18,10 @@ class DefaultControler extends AbstractController
     /**
      * @Route("/", name="index")
      *
-     * @param Request $request
-     * @param Mailer $mailer
+     * @param Request                  $request
+     * @param Mailer                   $mailer
      * @param EventDispatcherInterface $dispatcher
+     *
      * @return Response
      */
     public function index(Request $request, Mailer $mailer, EventDispatcherInterface $dispatcher): Response
@@ -31,7 +33,7 @@ class DefaultControler extends AbstractController
             $event = new ContactEvent($form->getData());
             $dispatcher->dispatch($event, ContactEvent::NAME);
 
-            if($mailer->sendEmail($form->getData())) {
+            if ($mailer->sendEmail($form->getData())) {
                 $this->addFlash('contact', 'Merci! Votre message à bien été envoyé.');
             } else {
                 $this->addFlash('echec', 'Un problème a eu lieu durant l\'envoi, veuillez ré-essayer plus tard');

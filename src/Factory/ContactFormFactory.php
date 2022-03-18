@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Factory;
@@ -9,6 +10,7 @@ class ContactFormFactory
 {
     /**
      * @param array $datas
+     *
      * @return ContactForm
      */
     public function create(array $datas): ContactForm

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Entity;
@@ -13,13 +14,6 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 class ContactForm
 {
     use TimestampableEntity;
-
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
@@ -40,6 +34,13 @@ class ContactForm
      * @ORM\Column(type="text")
      */
     public string $message;
+
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
     /**
      * @return mixed
