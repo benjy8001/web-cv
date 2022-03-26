@@ -1,0 +1,399 @@
+{% extends 'base.html.twig' %}
+{% import "macros.twig" as macros %}
+
+{% block diplomes %}
+    <section id="diplomes" class="section scrollspy">
+        <!-- Icon -->
+        <span class="icon btn-floating btn-large white"><i class="material-icons cyan-text text-darken-2">account_balance</i></span>
+        <!-- # Icon End # -->
+        <!-- Title -->
+        <h2 class="cyan-text text-darken-2">Diplômes</h2>
+        <!-- # Title End # -->
+        <!-- Table -->
+        <table class="highlight section-table">
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Diplôme</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col1"><img src="{{ asset('build/images/Education/Education_Building_2.png') }}" alt="IUT de Calais (62)" class="circle"></td>
+                <td class="col2">IUT de Calais (62)</td>
+                <td class="col3">Licence Pro RSC, Exploitation Réseau - Mention Bien</td>
+                <td class="col4">2006 - 2007</td>
+            </tr>
+            <tr>
+                <td class="col1"><img src="{{ asset('build/images/Education/Education_Building_2.png') }}" alt="IUT de Calais (62)" class="circle"></td>
+                <td class="col2">IUT de Calais (62)</td>
+                <td class="col3">DUT Informatique, Imagerie Numérique</td>
+                <td class="col4">2004 - 2006</td>
+            </tr>
+            <tr>
+                <td class="col1"><img src="{{ asset('build/images/Education/Education_Building_1.png') }}" alt="Lycée du Vimeu" class="circle"></td>
+                <td class="col2">Lycée du Vimeu</td>
+                <td class="col3">BAC STI Electrotechnique - Mention Bien</td>
+                <td class="col4">2004</td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- #  Table End # -->
+    </section>
+{% endblock %}
+
+{% block works %}
+    <section id="works" class="section scrollspy">
+        <!-- Icon -->
+        <span class="icon btn-floating btn-large light-green darken-3"><i class="material-icons">work</i></span>
+        <!-- # Icon End # -->
+        <!-- Title -->
+        <h2 class="light-green-text text-darken-3">Expérience Professionnelle</h2>
+        <!-- # Title End # -->
+        <!-- Table -->
+        <table class="highlight section-table">
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Entreprise</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col1"><img src="{{ asset('build/images/Works/Company_Logo_5.png') }}" alt="Consultant Séniore" class="circle"></td>
+                <td class="col2"><b>Consultant Sénior</b>
+                    <br> Réalisation d'études et chiffrages
+                    <br> Refonte
+                    <br> Usine Logicielle (Gitlab, CI/CD, Rancher, Review de code, phpqa)
+                </td>
+                <td class="col3">
+                    <span class="light-green-text text-darken-3">Business&Decision</span> / Amiens (80)
+                </td>
+                <td class="col4">Depuis Sept. 2018</td>
+            </tr>
+            <tr>
+                <td class="col1"><img src="{{ asset('build/images/Works/Company_Logo_4.png') }}" alt="Developpeur" class="circle"></td>
+                <td class="col2"><b>Developpeur</b>
+                    <br> Maintien, et l'évolution de l'interface Web de pilotage d'une solution de backup (Laravel, NodeJS, Redis, InfluxDB)
+                    <br> Participation à l'élaboration de la core-tech (solution de backup décentralisée basée sur le réseau P2P) (Python, Redis, libtorrent).</td>
+                <td class="col3">
+                    <span class="light-green-text text-darken-3">Ugloo</span> / Amiens (80)
+                </td>
+                <td class="col4">2017 - 2018</td>
+            </tr>
+            <tr>
+                <td class="col1"><img src="{{ asset('build/images/Works/Company_Logo_3.png') }}" alt="Developpeur Full Stack" class="circle"></td>
+                <td class="col2"><b>Developpeur Full Stack</b>
+                    <br> Assurer le maintien, la création et l'évolution des outils internes ; ainsi que la création de site web et de progiciels.</td>
+                <td class="col3">
+                    <span class="light-green-text text-darken-3">Plug-It</span> / Ailly-Sur-Noye (80)
+                </td>
+                <td class="col4">2014 - 2017</td>
+            </tr>
+            <tr>
+                <td class="col1"><img src="{{ asset('build/images/Works/Company_Logo_2.png') }}" alt="Guupzi" class="circle"></td>
+                <td class="col2"><b>Administrateur BDD</b></td>
+                <td class="col3">
+                    <span class="light-green-text text-darken-3">CCA International</span> / Amiens (80)
+                </td>
+                <td class="col4">2010 - 2014</td>
+            </tr>
+            <tr>
+                <td class="col1"><img src="{{ asset('build/images/Works/Company_Logo_1.png') }}" alt="Intracall Center" class="circle"></td>
+                <td class="col2"><b>Developpeur LAMP</b>
+                    <br> Créer des applications Intranet / Extranet en interaction avec un système de composition téléphonique, et répondant à un cahier des charges.</td>
+                <td class="col3">
+                    <span class="light-green-text text-darken-3">Intracall Center</span> / Amiens (80)
+                </td>
+                <td class="col4">2008 - 2010</td>
+            </tr>
+            </tbody>
+            <!-- # Table End # -->
+        </table>
+    </section>
+{% endblock %}
+
+{% block skills %}
+    <section id="skills" class="section scrollspy">
+        <!-- Icon -->
+        <span class="icon btn-floating btn-large deep-orange accent-3"><i class="material-icons">assessment</i></span>
+        <!-- # Icon End # -->
+        <!-- Title -->
+        <h2 class="deep-orange-text text-accent-3">Savoir Faire</h2>
+        <!-- # Title End # -->
+
+        {{ macros.skills_build() }}
+    </section>
+{% endblock %}
+
+{% block services %}
+    <section id="services" class="section scrollspy">
+        <!-- Icon -->
+        <span class="icon btn-floating btn-large deep-purple darken-3"><i class="material-icons">important_devices</i></span>
+        <!-- # Icon End # -->
+        <!-- Title -->
+        <h2 class="deep-purple-text text-darken-3">Savoir être</h2>
+        <!-- # Title End # -->
+
+        {{ macros.services_carousel_build() }}
+    </section>
+{% endblock %}
+
+{% block portfolio %}
+    <section id="portfolio" class="section scrollspy">
+        <!-- Icon -->
+        <span class="icon btn-floating btn-large light-green darken-3"><i class="material-icons">queue_play_next</i></span>
+        <!-- # Icon End # -->
+        <!-- Title -->
+        <h2 class="light-green-text text-darken-3">Portfolio</h2>
+        <!-- # Title End # -->
+
+        {{ macros.portfolio_build() }}
+    </section>
+{% endblock %}
+
+{% block references %}
+    <section id="references" class="section scrollspy">
+        <!-- Icon -->
+        <span class="icon btn-floating btn-large deep-orange accent-3"><i class="material-icons">assignment_ind</i></span>
+        <!-- # Icon End # -->
+        <!-- Title -->
+        <h2 class="deep-orange-text text-accent-3">References</h2>
+        <!-- # Title End # -->
+
+        {{ macros.references_carousel_build() }}
+    </section>
+{% endblock %}
+
+{% block contact %}
+    <section id="contact" class="section scrollspy">
+        <!-- Icon -->
+        <span class="icon btn-floating btn-large lime darken-2"><i class="material-icons">mail_outline</i></span>
+        <!-- # Icon End # -->
+        <!-- Title -->
+        <h2 class="lime-text text-darken-2">Me contacter</h2>
+        <!-- # Title End # -->
+        <!-- Contact Information -->
+        <div class="contact-information">
+            <div class="row">
+                <!-- Mail -->
+                <div class="col s6 l3">
+                    <div class="icon"><i class="material-icons">email</i></div>
+                    <p>benjy80 [at] gmail.com</p>
+                </div>
+                <!-- # Mail End # -->
+                <!-- Mobile -->
+                <div class="col s6 l3">
+                    <div class="icon"><i class="material-icons">phone_iphone</i></div>
+                    <p>06 14 63 61 41</p>
+                </div>
+                <!-- # Mobile End # -->
+                <!-- Skype -->
+                <div class="col s6 l3">
+                    <div class="icon"><i class="fa fa-skype"></i></div>
+                    <p>Skype / b.mabille</p>
+                </div>
+                <!-- # Skype End # -->
+                <!-- Location -->
+                <div class="col s6 l3">
+                    <div class="icon"><i class="material-icons">location_on</i></div>
+                    <p>18 rue Principale
+                        <br> 80110 AUBERCOURT</p>
+                </div>
+                <!-- # Location End # -->
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- # Contact Information End # -->
+    </section>
+{% endblock %}
+
+{% block contact_form %}
+    <div class="section contact-form">
+        <div class="row">
+            <div class="col s12 m6 l6 contact-text">
+                Un renseignement ?
+                <br>
+                <br> Je suis à votre écoute.
+            </div>
+            <div class="col s12 m6 l6">
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block portfolio_details_modal %}
+    {{ macros.portfolio_details_build() }}
+
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_latangente" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">La Tangente</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/latangente.jpg') }}" class="responsive-img" alt="La tangente">
+            <hr>
+            <p>Site Web d'un groupe musical. Commande de CD avec Paypal.</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <a href="http://www.latangente.band/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_phileasjv" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">Phileas JV</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/phileas-jv-2.jpg') }}" class="responsive-img" alt="Phileas JV">
+            <hr>
+            <p>Site Web d'un spécialiste de la location de véhicule. Carte Google Map interactive.</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <!--<a href="" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>-->
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_spta" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">SPTA</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/spta.jpg') }}" class="responsive-img" alt="SPTA">
+            <hr>
+            <p>Site Web de la SPTA.</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <a href="http://www.spta.fr/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_ecab80" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">ECAB80</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/ecab80.jpg') }}" class="responsive-img" alt="ECAB80">
+            <hr>
+            <p>Site Web de ECAB80.</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <a href="http://www.ecab80.fr/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_leflightcase" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">Le Flight Case</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/leflightcase.jpg') }}" class="responsive-img" alt="Le Flight Case">
+            <hr>
+            <p>Site Web de Le Flight Case.</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <a href="http://www.leflightcase.fr/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_picabou" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">Picabou</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/picabou.jpg') }}" class="responsive-img" alt="Picabou">
+            <hr>
+            <p>Site Web de Picabou.</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <a href="http://www.picabou.fr/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_exgtransfert" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">EXG Transfert</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/screen_exg.jpg') }}" class="responsive-img" alt="EXG Transfert">
+            <hr>
+            <p>Outil de partage d’Electroencéphalogramme.</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <a href="http://www.exg-transfert.com" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_gmcc" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">GMCC</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/e07fa5f0-e54e-11e2-9efe-22000a91e9a7-large.jpg') }}" class="responsive-img" alt="GMCC">
+            <hr>
+            <p>-</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <!--<a href="http://www.picabou.fr/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>-->
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_monitoring" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">Monitoring</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/4e70918c-e54f-11e2-a77d-22000aa5129e-large.jpg') }}" class="responsive-img" alt="Monitoring">
+            <hr>
+            <p>-</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <!--<a href="http://www.picabou.fr/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>-->
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_extranetclient" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">Extranet Client</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/861a0b22-e545-11e2-ada0-22000aa5108a-large.jpg') }}" class="responsive-img" alt="Extranet Client">
+            <hr>
+            <p>-</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <!--<a href="http://www.picabou.fr/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>-->
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+    <!-- Portfolio Detail Modal -->
+    <div id="Portfolio_Detail_odi" class="modal">
+        <div class="modal-content">
+            <a href="javascript:void(0)" class="modal-action modal-close close btn-floating btn waves-effect waves-teal white"><i class="material-icons light-green-text text-darken-3">close</i></a>
+            <h4 class="modal-title">ODI</h4>
+            <img src="{{ asset('build/images/Portfolio/realisations_web/2cfbfae6-e54f-11e2-a77d-22000aa5129e-large.jpg') }}" class="responsive-img" alt="ODI">
+            <hr>
+            <p>-</p>
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="waves-effect btn-flat left light-green-text text-darken-3">MORE INFO</a>-->
+            <!--<a href="http://www.picabou.fr/" target="_blank" class="waves-effect btn-flat right light-green-text text-darken-3">VOIR</a>-->
+        </div>
+    </div>
+    <!-- # Portfolio Detail Modal End # -->
+{% endblock %}

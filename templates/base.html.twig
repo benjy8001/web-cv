@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Benjamin Mabille - Developpeur Full Stack</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="robots" content="index,follow,all">
+    <meta name="robots" content="INDEX|FOLLOW">
+    <meta name="keywords" content=""/>
+    <meta name="description" content="" />
+    <meta name="Author" content="Benjamin Mabille">
+    <link type="text/plain" rel="author" href="{{ asset('build/humans.txt') }}" />
+    <!-- Favicons-->
+    <link rel="icon" href="{{ asset('build/images/dev.ico') }}" sizes="32x32">
+
+    <!-- Google Icon Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <noscript>Your browser does not support JavaScript!</noscript>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('color') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+    {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
+</head>
+
+<body id="page-top" class="scrollspy">
+<div class="wrapper">
+    <!-- Right Column -->
+    <div class="right-column">
+        <!-- Header -->
+        <header class="dark-bg">
+            <ul class="social-links">
+                <li>
+                    <a href="https://www.facebook.com/benjamin.mabille" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Facebook"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="https://github.com/benjy8001" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Github"><i class="fa fa-github"></i></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/benjamin-mabille-b4033154/" class="tooltipped" data-position="bottom" data-delay="20" data-tooltip="Linkedin"><i class="fa fa-linkedin"></i></a>
+                </li>
+            </ul>
+            <div class="user_name-title">
+                <h2>BENJAMIN MABILLE</h2>
+                <p>Developpeur Full Stack</p>
+            </div>
+        </header>
+        <!-- # Header End # -->
+        <!-- Personal Information -->
+        <div class="user-wrapper">
+            <!-- Profile Image -->
+            <div class="profile-image"> <img src="{{ asset('build/images/developpement-web.jpg') }}" alt="BENJAMIN MABILLE" class="responsive-img"> </div>
+            <!-- # Profile Image End # -->
+            <div class="user-content">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <span class="bolder">A l'ecoute d'opportunité</span>
+                        <div class="switch right">
+                            <label>
+                                <input disabled type="checkbox" checked>
+                                <span class="lever"></span>ON</label>
+                        </div>
+                    </li>
+                    <li class="collection-item">
+                        <span class="bolder">Bonjour, je suis Benjamin Mabille!</span>
+                        <br>
+                        <br> Je suis actuellement en poste en tant que Consultant Sénior. Mes différentes missions mon apportés une expérience certaine au niveau des CI/CD, du respect des PSR, de la rédaction de SFD/STD et du chiffrage de tâches.
+                        <br></li>
+                    <li class="collection-item">
+                        <a href="{{ asset('build/CV/BMA_CV_2018.pdf') }}" target="_blank" class="btn waves-effect waves-light dark-bg">MON CV<i class="material-icons">file_download</i></a>
+                        <a href="#contact" class="btn waves-effect waves-light light-bg">ME CONTACTER!<i class="material-icons">email</i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- # Personal Information End # -->
+    </div>
+    <!-- # Right Column End # -->
+    <!-- Left Column -->
+    <div class="left-column">
+        <header id="header">
+            <!-- Navigation -->
+            <div id="navbar" class="navbar-fixed">
+                <nav class="main-navigation light-bg">
+                    <div class="nav-wrapper">
+                        <ul>
+                            <li>
+                                <a href="#page-top" class="waves-effect">Accueil</a>
+                            </li>
+                            <li>
+                                <a href="#diplomes" class="waves-effect">Diplômes</a>
+                            </li>
+                            <li>
+                                <a href="#works" class="waves-effect">Expérience Professionnelle</a>
+                            </li>
+                            <li>
+                                <a href="#skills" class="waves-effect">Savoir faire</a>
+                            </li>
+                            <li>
+                                <a href="#services" class="waves-effect">Savoir être</a>
+                            </li>
+                            <li>
+                                <a href="#portfolio" class="waves-effect">Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="#references" class="waves-effect">References</a>
+                            </li>
+                            <li>
+                                <a href="#contact" class="waves-effect">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-- # Navigation End # -->
+            <!-- Mobile Navigation -->
+            <div class="fixed-action-btn vertical click-to-toggle mobile-menu">
+                <a class="btn btn-floating btn-large light-bg"> <i class="large mdi-navigation-menu"></i> </a>
+                <ul>
+                    <li>
+                        <a class="btn-floating" href="#page-top"><i class="material-icons">home</i></a>
+                    </li>
+                    <li>
+                        <a class="btn-floating white" href="#diplomes"><i class="material-icons cyan-text text-darken-2">account_balance</i></a>
+                    </li>
+                    <li>
+                        <a class="btn-floating light-green darken-3" href="#works"><i class="material-icons">work</i></a>
+                    </li>
+                    <li>
+                        <a class="btn-floating deep-orange accent-3" href="#skills"><i class="material-icons">assessment</i></a>
+                    </li>
+                    <li>
+                        <a class="btn-floating deep-purple darken-3" href="#services"><i class="material-icons">important_devices</i></a>
+                    </li>
+                    <li>
+                        <a class="btn-floating light-green darken-3" href="#portfolio"><i class="material-icons">queue_play_next</i></a>
+                    </li>
+                    <li>
+                        <a class="btn-floating cyan darken-4" href="#price"><i class="material-icons">format_list_bulleted</i></a>
+                    </li>
+                    <li>
+                        <a class="btn-floating deep-orange accent-3" href="#references"><i class="material-icons">assignment_ind</i></a>
+                    </li>
+                    <li>
+                        <a class="btn-floating lime darken-2" href="#contact"><i class="material-icons">mail_outline</i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- # Mobile Navigation End # -->
+            <!-- Header Content -->
+            <div class="light-bg header-wrap">
+                <div class="header-content">
+                    <h1>Je suis <strong>Benjamin Mabille</strong> |</h1>
+                    <span class="sub-text">Developpeur <strong>passionné</strong>, <strong>13 ans</strong> d'expérience.</span>
+                </div>
+            </div>
+            <!-- # Header Content End # -->
+        </header>
+        {% if app.session.flashbag.peek('contact')|length > 0 or app.session.flashbag.peek('echec')|length > 0 %}
+        <section style="margin-bottom: 30px;">
+            <div class="row">
+                <div class="col l12">
+                    {% for message in app.flashes('contact') %}
+                    <div id="card-alert" class="card green">
+                        <div class="card-content white-text">
+                            <p><i class="mdi-navigation-check"></i> {{ message }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% for message in app.flashes('echec') %}
+                        <div id="card-alert" class="card red">
+                            <div class="card-content white-text">
+                                <p>{{ message }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </section>
+        {% endif %}
+        <!-- Diplomes -->
+        {% block diplomes %}
+        {% endblock %}
+
+        <!-- Works -->
+        {% block works %}
+        {% endblock %}
+
+        <!-- Professional Skills -->
+        {% block skills %}
+        {% endblock %}
+
+        <!-- Services -->
+        {% block services %}
+        {% endblock %}
+
+        <!-- Portfolio -->
+        {% block portfolio %}
+        {% endblock %}
+
+        <!-- References -->
+        {% block references %}
+        {% endblock %}
+
+        <!-- Contact Me -->
+        {% block contact %}
+        {% endblock %}
+
+        {% block contact_form %}
+        <div class="section contact-form">
+            <div class="row">
+                <div class="col s12 m6 l6 contact-text">Un renseignement ?
+                    <br>
+                    <br> Je suis à votre écoute.</div>
+                <div class="col s12 m6 l6">
+                    <form action="" method="post">
+                        <input type="hidden" name="_process" id="_process" value="sendmail" />
+                        <input type="hidden" name="token" id="token" value="<?PHP echo $tokenConnexion; ?>" />
+                        <div class="input-field">
+                            <input id="name_surname" name="name_surname" type="text" class="validate">
+                            <label for="name_surname">Nom</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="email" name="email" type="email" class="validate">
+                            <label for="email">E-mail</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="subject" name="subject" type="text" class="validate">
+                            <label for="subject">Sujet</label>
+                        </div>
+                        <div class="input-field">
+                            <textarea id="message" name="message" class="materialize-textarea"></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <input type="submit" class="btn dark-bg waves-effect" value="ENVOYER">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- # Contact Me End # -->
+        {% endblock %}
+
+        {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set')) }}
+        
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col s12 m6 l6 left light-bg">www.benjamin-mabille.fr
+                        <br> {{ "now"|date("Y") }} - Copyright</div>
+                    <div class="col s12 m6 l6 right dark-bg">Me contacter!
+                        <br> benjy80 [at] gmail.com
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- # Footer End # -->
+    </div>
+    <!-- # Left Column End # -->
+</div>
+<!-- Loader -->
+<div class="page-loading">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer border-color">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+                <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- # Loader End -->
+
+{% block portfolio_details_modal %}
+{% endblock %}
+
+{% block footer_javascripts %}
+    {{ encore_entry_script_tags('core') }}
+{% endblock %}
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89915876-1', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+
+</html>
