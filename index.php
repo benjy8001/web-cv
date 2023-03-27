@@ -188,7 +188,7 @@ session_start();
             <div class="light-bg header-wrap">
                 <div class="header-content">
                     <h1>Je suis <strong>Benjamin Mabille</strong> |</h1>
-                    <span class="sub-text">Developpeur <strong>passionné</strong>, <strong>14 ans</strong> d'expérience.</span>
+                    <span class="sub-text">Developpeur <strong>passionné</strong>, <strong><?php echo (date('Y') - 2008) ?> ans</strong> d'expérience.</span>
                 </div>
             </div>
             <!-- # Header Content End # -->
@@ -998,7 +998,7 @@ session_start();
             <div class="copyright">
                 <div class="row">
                     <div class="col s12 m6 l6 left light-bg">www.benjamin-mabille.fr
-                        <br> 2022 - Copyright
+                        <br> <?php echo date('Y'); ?> - Copyright
                     </div>
                     <div class="col s12 m6 l6 right dark-bg">Me contacter!
                         <br> benjy80 [at] gmail.com
