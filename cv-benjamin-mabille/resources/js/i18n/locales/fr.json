@@ -1,0 +1,51 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "experiences": "Expériences",
+        "education": "Formation",
+        "skills": "Compétences",
+        "projects": "Projets",
+        "blog": "Blog",
+        "contact": "Contact"
+    },
+    "hero": {
+        "available": "Disponible",
+        "unavailable": "Indisponible",
+        "scroll": "Scroll pour découvrir"
+    },
+    "sections": {
+        "experiences": "Expériences",
+        "education": "Formation",
+        "skills": "Compétences",
+        "projects": "Projets",
+        "latestArticles": "Derniers articles",
+        "contact": "Contact"
+    },
+    "skills": {
+        "backend": "Backend",
+        "frontend": "Frontend",
+        "devops": "DevOps",
+        "soft": "Savoir-être"
+    },
+    "contact": {
+        "title": "Me contacter",
+        "subtitle": "N'hésitez pas à me contacter pour toute question ou collaboration.",
+        "name": "Nom",
+        "email": "Email",
+        "subject": "Sujet",
+        "message": "Message",
+        "send": "Envoyer",
+        "success": "Message envoyé avec succès !",
+        "namePlaceholder": "Votre nom",
+        "emailPlaceholder": "votre@email.com",
+        "subjectPlaceholder": "Sujet de votre message",
+        "messagePlaceholder": "Votre message..."
+    },
+    "timeline": {
+        "present": "Aujourd'hui"
+    },
+    "footer": {
+        "rights": "Tous droits réservés.",
+        "builtWith": "Construit avec Laravel & React"
+    }
+}
