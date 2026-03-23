@@ -1,0 +1,12 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+Benjamin Mabille -- Développeur
+
+# TECHNOLOGY COLOPHON
+
+Laravel, PHP
+React, TypeScript, Inertia.js
+Tailwind CSS v4, Vite

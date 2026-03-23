@@ -4,297 +4,154 @@ ifndef VERBOSE
 .SILENT:
 endif
 
-DOCKER_COMPOSE  = docker-compose
-DOCKER          = docker
+DOCKER_COMPOSE  = docker compose
 EXEC_PHP        = $(DOCKER_COMPOSE) exec phpfpm
 ARTISAN         = $(EXEC_PHP) php artisan
-REDIS         	= $(DOCKER_COMPOSE) exec -T redis redis-cli
-CURRENT_DIR		= $(shell pwd)
-LOCAL_ARTEFACTS = var/artefacts
+COMPOSER        = $(EXEC_PHP) composer
 
-IMAGE_AUDIT 	= jakzal/phpqa:1.97.0-php8.3-alpine
-QA 				= docker run --rm -e COMPOSER_AUTH="${COMPOSER_AUTH}" -v $(CURRENT_DIR)/:/project -w /project $(IMAGE_AUDIT)
-COMPOSER_BIN	= $(EXEC_PHP) composer
-COMPOSER 		= $(COMPOSER_BIN)
-COMPOSER_CI 	= docker run --rm -e COMPOSER_AUTH="${COMPOSER_AUTH}" -v $(CURRENT_DIR)/:/project -w /project composer:2.8 composer
+# Deployment — copy .env.make.example to .env.make and fill in your values
+-include .env.make
+DEPLOY_SSH = ssh -p $(DEPLOY_PORT) $(DEPLOY_USER)@$(DEPLOY_HOST)
 
-ifndef QUIET
-#normal mode display text
-QUIET_PARAM :=
-define display
-	@{ \
-    printf $1; \
-    }
-endef
-else
-#  quiet enabled do nothing
-QUIET_PARAM :=  -q
-define display
-endef
-endif
-
-
-#
-# Presentation commands
-# -------------------
-#
-coffee:
-	printf "\033[32m You can go take a coffee while we work for you \033[0m\n"
-
-banner:
-	printf "\033[95m								\n"         
-	printf "\033[95m██  ██ ██ █████▄  ██  ██ ▄████▄ \n"
-	printf "\033[95m██▄▄██ ██ ██▄▄██▄  ▀██▀  ██▄▄██ \n"
-	printf "\033[95m ▀██▀  ██ ██   ██   ██   ██  ██ \n"
-                                
-#
 .DEFAULT_GOAL := help
-help: banner ## This help
+help: ## This help
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/  \x1b\[32m##/\x1b\[33m/'
-.PHONY: help coffee banner
-
-check:
-ifndef GIT_PRIV_KEY
-	@echo "Warning: GIT_PRIV_KEY isn't defined; continue? [Y/n]"
-	@read line; if [ $$line = "n" ]; then echo aborting; exit 1 ; fi
-endif
+.PHONY: help
 
 ##
 ## Project
 ## -------
-build: .env ## Build docker
-	printf "\033[32m Deploy to Server \033[0m\n"
+build: .env ## Build docker images
 	$(DOCKER_COMPOSE) build
 
-run: build ## Run project
-	printf " 🏃\033[33m Running application ... \033[0m\n"
-	$(DOCKER_COMPOSE) pull
+run: build ## Start containers
 	$(DOCKER_COMPOSE) up -d
-	# wait 10s for containers being fully started
-	sleep 10
-	printf "\n\n"
 
-stop: ## Stop the VMs
-	printf " \033[31m◉\033[0m\033[33m  Stopping application ... \033[0m\n"
+stop: ## Stop containers
 	$(DOCKER_COMPOSE) stop
-	printf "\n\n"
 
-down: ## Stop the VMs
-	printf " \033[31m◉\033[0m\033[33m  Stopping application ... \033[0m\n"
+down: ## Stop and remove containers + volumes
 	$(DOCKER_COMPOSE) down --volumes
-	printf "\n\n"
 
-clean: ## Stop the VMs and cleaning
+clean: ## Stop containers and remove generated files (ask confirmation)
 	@echo -n "Are you sure? [y/N] " && read ans && [ $${ans:-N} = y ]
 	$(DOCKER_COMPOSE) down -v
-	rm -rf vendor node_modules public/css public/vendor public/js public/storage storage/logs/laravel.log storage/debugbar/*.json
+	rm -rf vendor public/build storage/logs/laravel.log
 
-tests: ## Tests
-	$(ARTISAN) test
-
-connect: banner ## Connect to apache docker
-	printf " 👷\033[33m  Application shell ... \033[0m\n"
-	$(EXEC_PHP) bash
-	printf "\033[33mBye \033[0m\n\n"
-
-tinker: banner ## Run laravel tinker to apache docker
-	printf " 👷\033[33m  Application shell ... \033[0m\n"
-	$(ARTISAN) tinker
-	printf "\033[33mBye \033[0m\n\n"
+start: add-hooks .env run vendor assets init-storage key init-database ## First install: full project setup
 
 .env:
 	cp .env.example .env
 
-key: ## Generate APP_KEY in .env file
-	$(ARTISAN) key:generate
-
 add-hooks: ## Install git hooks
-	 rm -fr .git/hooks && ln -s `pwd`/.hooks/ .git/hooks
-
-start: add-hooks .env run vendor assets init-storage permission key init-database seed start-worker ## Run the project
+	rm -fr .git/hooks && ln -s `pwd`/.hooks/ .git/hooks
 
 ##
-## Config Caching
-## -----------------
-config-cache: ## Boosting performance
-	$(ARTISAN) config:cache
+## Assets
+## ------
+assets: ## Install npm deps and compile assets
+	$(EXEC_PHP) npm install
+	$(EXEC_PHP) npm run build
 
-config-clear: ## Clear the config cache
-	$(ARTISAN) config:clear
-
-##
-## Route Caching
-## -----------------
-route-cache: ## Boosting performance
-	$(ARTISAN) route:cache
-
-route-clear: ## Clear the route cache
-	$(ARTISAN) route:clear
+assets-watch: ## Compile assets in watch mode
+	$(EXEC_PHP) npm run dev
 
 ##
-## Optimization
-## -----------------
-classmap-optimize: ## Classmap Optimization
-	$(ARTISAN) optimize --force
-
-composer-optimize: ## Composer Optimization
-	$(COMPOSER) dumpautoload -o
-
-##
-## Vendor and assets
-## -----------------
-permission: ## Fix permission dir
-	$(EXEC_PHP) chmod 777 storage -R
-	$(EXEC_PHP) chmod 777 bootstrap/cache -R
-
-composer.lock: ## Run composer update
-	$(COMPOSER) update --lock --no-interaction
-
-vendor: ## Run composer install (normally, wee only need to run composer.lock)
-	printf " 💽\033[33m Start Composer ... \033[0m\n"
-	$(COMPOSER) install ${QUIET_PARAM}
-
-vendor-ci:
-	printf " 💽\033[33m Start Composer ... \033[0m\n"
-	$(COMPOSER_CI) install --ignore-platform-req=php --ignore-platform-req=ext-pcntl --ignore-platform-req=ext-gd --ignore-platform-req=ext-intl --ignore-platform-req=ext-exif --ignore-platform-req=ext-ftp ${QUIET_PARAM}
-
-composer-install: ## Run composer install Dev
+## Composer
+## --------
+vendor: ## Run composer install
 	$(COMPOSER) install
 
-composer-install-prod: ## Run composer install Prod
-	$(COMPOSER) install --no-dev --optimize-autoloader
-
-node-modules:
-	$(DOCKER) pull node:lts-alpine
-	$(DOCKER) run  --rm -v `pwd`/:/project -w /project -u $(shell id -u):$(shell id -g) node:lts-alpine npm install
-
-assets: node-modules ## Compile assets in dev mode
-	$(DOCKER) run  --rm -v `pwd`/:/project -w /project -u $(shell id -u):$(shell id -g) node:lts-alpine npm run build
-
-assets-prod: node-modules ## Compile assets in prod mode
-	$(DOCKER) run  --rm -v `pwd`/:/project -w /project -u $(shell id -u):$(shell id -g) node:lts-alpine npm run build
-
-.PHONY: assets vendor composer.lock
+composer-update: ## Update composer dependencies
+	$(COMPOSER) update
 
 ##
 ## Database
-## -----------------
-init-database: ## Delete and create database
-	$(call display," 💽\033[33m Initialize database ... \033[0m\n")
-	$(ARTISAN) migrate:fresh
+## --------
+init-database: ## Fresh migration + seed
+	$(ARTISAN) migrate:fresh --seed
 
-migration: ## Generate a new eloquent migration
-ifdef COMMAND_ARGS
-	$(ARTISAN) make:migration $(COMMAND_ARGS)
-else
-	$(ARTISAN) make:migration new_migration_file
-endif
+migrate: ## Run pending migrations
+	$(ARTISAN) migrate
 
-migrate: ## Play latest eloquent migrations
-	$(ARTISAN) migrate $(QUIET_PARAM)
-
-seed: ## Populate DB
+seed: ## Run seeders
 	$(ARTISAN) db:seed
 
 ##
-## Other init
-## -----------------
-init-storage: ## Symlink storage dir
+## Laravel
+## -------
+key: ## Generate APP_KEY in .env
+	$(ARTISAN) key:generate
+
+init-storage: ## Create public storage symlink
 	$(ARTISAN) storage:link
 
-monitor-redis: ## Monitor redis
-	$(REDIS) MONITOR
+optimize: ## Cache config, routes and views
+	$(ARTISAN) optimize
 
-start-worker: ## Start supervisor workers
-	$(EXEC_PHP) /usr/bin/supervisord -c /etc/supervisord.conf
+optimize-clear: ## Clear all caches
+	$(ARTISAN) optimize:clear
 
-start-horizon: start-worker ## Start only horizon job
-	supervisorctl stop all && supervisorctl start horizon-worker:horizon-worker_00
+tinker: ## Run Laravel Tinker
+	$(ARTISAN) tinker
 
-swagger:
-	$(DOCKER) run -p 8080:8080 -e SWAGGER_JSON=./bin/swagger.json -v /bar:/foo swaggerapi/swagger-ui
+connect: ## Open shell in PHP container
+	$(EXEC_PHP) bash
 
 ##
-## Tools
-## -----------------
-lint: lp ly
+## Tests
+## -----
+tests: ## Run Pest tests
+	$(ARTISAN) test
 
-pull_qa: ## Pull lastest update of docker image audit
-	$(DOCKER) pull $(IMAGE_AUDIT)
+##
+## Deployment (production)
+## -----------------------
+deploy: deploy-assets deploy-sync deploy-env deploy-composer deploy-artisan ## Full production deployment
 
-ly: ## lint yaml files
-	$(QA) sh -c  "find -iname '*.yml' -not -path './vendor/*' -not -path './node_modules/*' -not -name '.gitlab-ci.yml' -print0 | xargs -0 -n1  yaml-lint;"
+deploy-assets: ## Build production assets locally (npm run build)
+	printf "\033[32m Building assets... \033[0m\n"
+	$(EXEC_PHP) npm install
+	$(EXEC_PHP) npm run build
 
-lp: ## lint php files
-	$(QA) parallel-lint --blame --exclude vendor .
+deploy-sync: ## Sync files to server via rsync (excludes .env, vendor, node_modules, logs)
+	printf "\033[32m Syncing to $(DEPLOY_USER)@$(DEPLOY_HOST):$(DEPLOY_PATH) ... \033[0m\n"
+	rsync -az --delete -p \
+		--exclude='.git' \
+		--exclude='.env' \
+		--exclude='.claude' \
+		--exclude='node_modules' \
+		--exclude='vendor' \
+		--exclude='storage/logs' \
+		--exclude='storage/app/public' \
+		--exclude='public/hot' \
+		--exclude='docker' \
+		--exclude='docker-compose.yml' \
+		--exclude='Makefile' \
+		--exclude='CLAUDE.md' \
+		-e "ssh -p $(DEPLOY_PORT)" \
+		./ \
+		$(DEPLOY_USER)@$(DEPLOY_HOST):$(DEPLOY_PATH)/
 
-security: ## Check security of your dependencies (https://github.com/fabpot/local-php-security-checker)
-	$(QA) local-php-security-checker
+deploy-env: ## Copy .env.production to .env on production server
+	printf "\033[32m Copying .env.production to .env on server... \033[0m\n"
+	$(DEPLOY_SSH) "cp $(DEPLOY_PATH)/.env.production $(DEPLOY_PATH)/.env"
 
-outdated-packages: ## Check update of your dependencies
-	$(QA) composer outdated -D
+deploy-composer: ## Run composer install --no-dev on production server
+	printf "\033[32m Installing dependencies on server... \033[0m\n"
+	$(DEPLOY_SSH) "cd $(DEPLOY_PATH) && composer install --no-dev --optimize-autoloader --no-interaction"
 
-psalm: ## Finds errors in PHP applications
-	$(QA) psalm --find-dead-code
+deploy-artisan: ## Run migrations and cache commands on production server
+	printf "\033[32m Running artisan commands on server... \033[0m\n"
+	$(DEPLOY_SSH) "cd $(DEPLOY_PATH) && php artisan migrate --force && php artisan storage:link --force && php artisan optimize"
 
-phpmd: ## PHP Mess Detector (https://phpmd.org)
-	$(QA) phpmd app text .phpmd.xml
+deploy-ssh: ## Open SSH session on production server
+	$(DEPLOY_SSH)
 
-phpcpd: ## PHP Copy/Paste Detector (https://github.com/sebastianbergmann/phpcpd)
-	$(QA) phpcpd app
-
-phpmetrics: artefacts  ## PhpMetrics (http://www.phpmetrics.org)
-	$(QA) phpmetrics --report-html=$(LOCAL_ARTEFACTS)/phpmetrics app
-
-pdepend: artefacts ## PDepend (https://pdepend.org/)
-	$(QA) pdepend --summary-xml=$(LOCAL_ARTEFACTS)/summary.xml --jdepend-chart=$(LOCAL_ARTEFACTS)/jdepend.svg --overview-pyramid=$(LOCAL_ARTEFACTS)/pyramid.svg app
-
-php-documentor: ## PHP Documentor
-	$(QA) phpDocumentor -d app -t phpDocumentor
-
-pint: ## Laravel Pint PHP code style fixer (https://github.com/laravel/pint)
-	$(QA) pint --preset symfony --test
-
-phparkitect: ## Helps you to keep your PHP codebase coherent and solid
-	$(QA) phparkitect check
-
-php-cs-fixer: ## php-cs-fixer (http://cs.sensiolabs.org)
-	$(QA) php-cs-fixer fix --dry-run --using-cache=no --verbose --diff
-
-apply-php-cs-fixer-all: ## apply php-cs-fixer fixes on all projet files
-	$(QA) php-cs-fixer fix -q --using-cache=no
-
-apply-php-cs-fixer: ## apply php-cs-fixer fixes on new files
-	$(eval NEW_FILES := $(shell git diff $(REF_BRANCH) --name-only| egrep '.php$$'))
-	$(QA) sh -c 'for filename in $(NEW_FILES);  do if [ -f $$filename ]; then  echo  "fixing $$filename";  php-cs-fixer fix -q --using-cache=no $$filename; fi; done;'
-
-rector: ## Tool for instant code upgrades and refactoring
-	$(QA) rector process app --dry-run
-
-larastan: ## PHP Static Analysis Tool with Laravel presets (https://github.com/nunomaduro/larastan)
-	$(QA) phpstan-larastan analyse -l 1 --memory-limit=-1 app # -c .phpstan.neon
-
-deprecation-detector: artefacts ## Run deprecation detector
-	$(QA) deprecation-detector check ./app --log-html $(LOCAL_ARTEFACTS)/deprecation/index.html
-
-phpunit: artefacts ## Run phpunit
-	printf " 💽\033[33m Start PHPUnit ... \033[0m\n"
-ifdef COMMAND_ARGS
-	$(QA) phpdbg -qrr -d memory_limit=-1 /tools/phpunit-9 $(COMMAND_ARGS) --report-useless-tests --no-coverage --colors=never
-else
-	$(QA) phpdbg -qrr -d memory_limit=-1 /tools/phpunit-9 --colors=never --testsuite "Unit Tests" --log-junit $(LOCAL_ARTEFACTS)/unitreport.xml --coverage-php $(LOCAL_ARTEFACTS)/coverage.cov --coverage-html=$(LOCAL_ARTEFACTS)/coverage --coverage-clover=$(LOCAL_ARTEFACTS)/coverage.xml --coverage-text
-endif
-
-pest: artefacts ## Run pest
-	printf " 💽\033[33m Start Pest ... \033[0m\n"
-	#$(EXEC_PHP) ./vendor/bin/pest --testsuite "Pest Tests" --log-junit $(LOCAL_ARTEFACTS)/unitreport.xml --coverage-php $(LOCAL_ARTEFACTS)/coverage.cov --coverage-html=$(LOCAL_ARTEFACTS)/coverage --coverage-clover=$(LOCAL_ARTEFACTS)/coverage.xml --coverage-text
-	$(QA) ./vendor/bin/pest --testsuite "Pest Tests" --log-junit $(LOCAL_ARTEFACTS)/unitreport.xml --coverage-php $(LOCAL_ARTEFACTS)/coverage.cov --coverage-html=$(LOCAL_ARTEFACTS)/coverage --coverage-clover=$(LOCAL_ARTEFACTS)/coverage.xml --coverage-text
-
-infection: artefacts ## Run infection
-	printf " 💽\033[33m Start Infection ... \033[0m\n"
-	$(QA) phpdbg -qrr -d memory_limit=-1 /tools/infection --only-covered -s
-
-artefacts:
-	mkdir -p $(LOCAL_ARTEFACTS)
-
-.PHONY: artefacts
+.PHONY: build run stop down clean start add-hooks
+.PHONY: assets assets-watch
+.PHONY: vendor composer-update
+.PHONY: init-database migrate seed
+.PHONY: key init-storage optimize optimize-clear tinker connect
+.PHONY: tests
+.PHONY: deploy deploy-assets deploy-sync deploy-env deploy-composer deploy-artisan deploy-ssh
